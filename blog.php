@@ -1,3 +1,6 @@
+<?php
+require 'function-conn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,12 +48,18 @@
                     <div class="col-lg-2">
                         <ul class="list-group">
                             <li class="list-group-item active" aria-current="true">Categories</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                            <li class="list-group-item">A fourth item</li>
-                            <li class="list-group-item">And a fifth one</li>
+                            <?php
+                            $query = mysqli_query($conn, "SELECT * FROM categories");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                                $name = $data['name'];
+                            ?>
+                                <li class="list-group-item"><?= $name; ?></li>
+                            <?php
+                            }
+                            ?>
                         </ul>
                     </div>
+
                 </div>
             </div>
             </div>
