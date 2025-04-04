@@ -32,11 +32,12 @@ require 'function-conn.php';
                     <div class="col-lg-10">
                         <div class="row">
                             <?php
-                            $query = mysqli_query($conn, "SELECT * FROM posts");
+                            $query = mysqli_query($conn, "SELECT * FROM posts order by id desc");
                             while ($data = mysqli_fetch_assoc($query)) {
                                 $title = $data['title'];
                                 $created_at = $data['created_at'];
                                 $media = $data['media'];
+                                $id = $data['id'];
                             ?>
                                 <div class="col-lg-4 mb-3 mt-3">
                                     <div class="card" style="width: 18rem;">
@@ -44,7 +45,7 @@ require 'function-conn.php';
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $title; ?></h5>
                                             <p class="card-text"><?= $created_at; ?></p>
-                                            <a href="#" class="btn btn-primary">Read</a>
+                                            <a href="blog-detail.php?id=<?= $id; ?>" class="btn btn-primary">Read</a>
                                         </div>
                                     </div>
                                 </div>
