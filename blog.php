@@ -36,10 +36,11 @@ require 'function-conn.php';
                             while ($data = mysqli_fetch_assoc($query)) {
                                 $title = $data['title'];
                                 $created_at = $data['created_at'];
+                                $media = $data['media'];
                             ?>
                                 <div class="col-lg-4 mb-3 mt-3">
                                     <div class="card" style="width: 18rem;">
-                                        <img src="https://app.idstar.co.id/static/media/idstar-vision.b8f7b0f3.png" class="card-img-top" alt="...">
+                                        <img src="../geraiadmin/images/<?= $media; ?>" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $title; ?></h5>
                                             <p class="card-text"><?= $created_at; ?></p>
