@@ -31,17 +31,25 @@ require 'function-conn.php';
                 <div class="row">
                     <div class="col-lg-10">
                         <div class="row">
-                            <div class="col-lg-4 mb-3 mt-3">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="https://app.idstar.co.id/static/media/idstar-vision.b8f7b0f3.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <?php
+                            $query = mysqli_query($conn, "SELECT * FROM posts");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                                $title = $data['title'];
+                                $created_at = $data['created_at'];
+                            ?>
+                                <div class="col-lg-4 mb-3 mt-3">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src="https://app.idstar.co.id/static/media/idstar-vision.b8f7b0f3.png" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $title; ?></h5>
+                                            <p class="card-text"><?= $created_at; ?></p>
+                                            <a href="#" class="btn btn-primary">Read</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            <?php
+                            }
+                            ?>
                         </div>
 
                     </div>
